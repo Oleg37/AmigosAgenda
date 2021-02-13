@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layoutDescription="@xml/item_contactos_scene">
+
+    <TextView
+        android:id="@+id/tvNombreFecha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvHoraTelefono"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Name" />
+
+    <TextView
+        android:id="@+id/tvHoraTelefono"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="5dp"
+        android:gravity="center|center_vertical"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:drawableEndCompat="@drawable/telefono"
+        app:drawableStartCompat="@drawable/telefono"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreFecha"
+        tools:text="Phone" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="24dp"
+        android:background="@android:drawable/button_onoff_indicator_on"
+        app:layout_constraintTop_toBottomOf="@+id/tvHoraTelefono"
+        tools:layout_editor_absoluteX="0dp" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

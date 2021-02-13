@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="412dp"
+    app:layoutDescription="@xml/item_motion_scene2">
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Name" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLlamadas" />
+
+    <TextView
+        android:id="@+id/tvTelefono"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:drawablePadding="5dp"
+        android:gravity="center|center_vertical"
+        app:drawableEndCompat="@drawable/telefono"
+        app:drawableStartCompat="@drawable/telefono"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFecNac"
+        app:layout_constraintEnd_toStartOf="@+id/tvFecNac"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvFecNac"
+        tools:text="Phone" />
+
+    <TextView
+        android:id="@+id/tvFecNac"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:drawablePadding="5dp"
+        android:gravity="center|center_vertical"
+        app:drawableEndCompat="@drawable/fecnac"
+        app:drawableStartCompat="@drawable/fecnac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTelefono"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombre"
+        tools:text="Birthdate" />
+
+    <TextView
+        android:id="@+id/tvLlamadas"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        app:drawableEndCompat="@drawable/llamadas"
+        app:drawableStartCompat="@drawable/llamadas"
+        app:layout_constraintBottom_toBottomOf="@+id/btBorrar"
+        app:layout_constraintEnd_toStartOf="@+id/btEditar"
+        app:layout_constraintStart_toEndOf="@+id/btBorrar"
+        app:layout_constraintTop_toTopOf="@+id/btBorrar"
+        tools:text="Llamadas" />
+
+    <ImageButton
+        android:id="@+id/btBorrar"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/todo"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/borrar"
+        android:tint="#FF0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btEditar"
+        tools:srcCompat="@drawable/borrar" />
+
+    <ImageButton
+        android:id="@+id/btEditar"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/todo"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFecNac"
+        app:srcCompat="@drawable/editar" />
+</androidx.constraintlayout.motion.widget.MotionLayout>

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Amigos Agenda</string>
+    <string name="inicio">Inicio</string>
+    <string name="listar">Ver Amigos</string>
+    <string name="importar">Importar</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sinContacto">❗No tienes nigún contacto todavía❗</string>
+    <string name="esTelefonoSelecciona">Selecciona un teléfono</string>
+    <string name="esVariosTelefonos">Existen varios teléfonos</string>
+    <string name="esNoTelefono">Nigún teléfono encontrado</string>
+    <string name="esNombre">Nombre</string>
+    <string name="esTelefono">Teléfono</string>
+    <string name="esGuardar">Guardar contacto</string>
+    <string name="esRequerido">Este campo es requerido</string>
+    <string name="esLlamadas">❗No existen llamadas aún❗</string>
+    <string name="todo">TODO</string>
+    <string name="agenda_amigos"><u>Agenda Amigos</u></string>
+    <string name="esNoFecha">No hay fecha existente</string>
+    <string name="cien">💯</string>
+    <string name="pantalla_de_inicio">PANTALLA DE INICIO</string>
+    <string name="permisos">Se requieren una serie de permisos para poder seguir utilizando esta aplicación</string>
+    <string name="permisos2">PERMISOS</string>
+</resources>

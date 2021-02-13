@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/inicio_amigos">
+
+    <fragment
+        android:id="@+id/inicio_amigos"
+        android:name="es.miapp.ad.amigosagenda.view.fragments.Inicio"
+        android:label="@string/inicio"
+        tools:layout="@layout/inicio_fragment" />
+
+    <fragment
+        android:id="@+id/importar_amigos"
+        android:name="es.miapp.ad.amigosagenda.view.fragments.ImportarContactos"
+        android:label="@string/importar"
+        tools:layout="@layout/importar_contactos_fragment" />
+
+    <fragment
+        android:id="@+id/listar_amigos"
+        android:name="es.miapp.ad.amigosagenda.view.fragments.ListarAmigos"
+        android:label="@string/listar"
+        tools:layout="@layout/listar_amigos_fragment">
+        <action
+            android:id="@+id/action_listar_amigos_to_importar_amigos"
+            app:destination="@id/importar_amigos" />
+        <action
+            android:id="@+id/action_listar_amigos_to_fragment_edit_friend"
+            app:destination="@id/fragment_edit_friend" />
+        <action
+            android:id="@+id/action_listar_amigos_to_historialLlamadas"
+            app:destination="@id/historialLlamadas" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_edit_friend"
+        android:name="es.miapp.ad.amigosagenda.view.fragments.EditarAmigo"
+        android:label="Editar amigos"
+        tools:layout="@layout/editar_amigo_fragment">
+        <action
+            android:id="@+id/action_fragment_edit_friend_to_listar_amigos"
+            app:destination="@id/listar_amigos" />
+    </fragment>
+    <fragment
+        android:id="@+id/historialLlamadas"
+        android:name="es.miapp.ad.amigosagenda.view.fragments.HistorialLlamadas"
+        android:label="Histórico de llamadas"
+        tools:layout="@layout/historial_llamadas_fragment">
+        <action
+            android:id="@+id/action_historialLlamadas_to_listar_amigos"
+            app:destination="@id/listar_amigos" />
+    </fragment>
+</navigation>
