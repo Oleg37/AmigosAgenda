@@ -30,6 +30,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,20 +69,35 @@ public class ListarAmigos extends Fragment implements OnItemClickListenerAmigo {
         b.rvContactos.setAdapter(adapter);
         b.rvContactos.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        viewModel.getLiveNumAmigosList2().observe(requireActivity(), listado -> {
+        viewModel.getListNumLlamada().observe(requireActivity(), listado -> {
             friendList.clear();
             friendList.addAll(listado);
             adapter.notifyDataSetChanged();
         });
 
-//        viewModel.getListNumLlamada().observeForever(requireActivity(), friendNumberCalls -> {
-//            friendList.clear();
-//            friendList.addAll(friendNumberCalls);
-//            adapter.notifyDataSetChanged();
-//        });
+        b.fabDeleteAll.setOnClickListener(v -> {
+            if (!friendList.isEmpty()) {
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(requireContext());
 
-        b.fabAddContacto.setOnClickListener(v -> NavHostFragment.findNavController(this)
-                .navigate(R.id.action_listar_amigos_to_importar_amigos));
+                builder.setTitle("Eliminar todos los contactos").setMessage("¿Seguro que quieres eliminar toda tu " +
+                        "lista de amigos existentes?, perderás las llamadas asignadas a ese contacto también." +
+                        "\n\n¿Estás seguro?");
+
+                builder.setPositiveButton("Sí", (dialog, id) -> viewModel.deleteAll());
+
+                builder.setNegativeButton("No", (dialog, id) -> dialog.dismiss());
+
+                AlertDialog alert = builder.create();
+                alert.show();
+
+                Button bTNegative = alert.getButton(DialogInterface.BUTTON_NEGATIVE);
+                Button bTPositive = alert.getButton(DialogInterface.BUTTON_POSITIVE);
+                bTNegative.setTextColor(Color.RED);
+                bTPositive.setTextColor(Color.GREEN);
+            } else {
+                Snackbar.make(b.getRoot().getRootView(), "¡Agrega a algún amigo primero!", Snackbar.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

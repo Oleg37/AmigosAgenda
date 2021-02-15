@@ -40,6 +40,7 @@ public class Repository {
 
     private LiveData<List<Amigo>> listAmigo;
     private List<Amigo> listadoAmigos;
+    private List<Llamada> listadoLlamadas;
     private LiveData<List<Llamada>> listLlamada;
     private LiveData<List<NumLlamada>> listNumLlamada;
 
@@ -110,19 +111,31 @@ public class Repository {
         });
     }
 
+    public void deleteAll() {
+        UtilThread.threadExecutorPool.execute(() -> {
+            try {
+                amigoDao.deleteAll();
+            } catch (Exception e) {
+                Log.e("xyz", e.getMessage());
+            }
+        });
+    }
+
     public LiveData<List<Llamada>> getLlamadas(long id) {
         return llamadaDao.getLlamadas(id);
     }
 
-    public LiveData<List<NumLlamada>> getLiveNumAMigosList() {
-        return amigoDao.getAllNumLlamadas();
+    public LiveData<List<NumLlamada>> getListNumLlamada() {
+        if (listNumLlamada == null) {
+            listNumLlamada = amigoDao.getAllNumLlamadas();
+        }
+        return listNumLlamada;
     }
 
-    public Amigo getAcual() {
-        return amigo;
-    }
-
-    public List<Amigo> getAmigosList() {
-        return amigoDao.getAllAmigoList();
+    public List<Amigo> getListadoAmigos() {
+        if (listadoAmigos == null) {
+            listadoAmigos = amigoDao.getAllAmigoList();
+        }
+        return listadoAmigos;
     }
 }

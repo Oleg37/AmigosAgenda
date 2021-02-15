@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -51,7 +50,7 @@ public class HistorialLlamadas extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewmodel = new ViewModelProvider(requireActivity()).get(Viewmodel.class);
-        amigo = viewmodel.getAcual();
+        amigo = viewmodel.getAmigo();
 
         init();
     }
@@ -63,21 +62,18 @@ public class HistorialLlamadas extends Fragment {
         b.rvHistorial.setAdapter(adapter);
         b.rvHistorial.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        viewmodel.getLlamadas(amigo.getId()).observe(requireActivity(), new Observer<List<Llamada>>() {
-            @Override
-            public void onChanged(List<Llamada> numLlamadas) {
-                if (numLlamadas.size() == 0) {
-                    b.rvHistorial.setVisibility(View.GONE);
-                    b.tvNoLlamadas.setVisibility(View.VISIBLE);
-                } else {
-                    b.rvHistorial.setVisibility(View.VISIBLE);
-                    b.tvNoLlamadas.setVisibility(View.GONE);
-                }
-
-                llamadaList.clear();
-                llamadaList.addAll(numLlamadas);
-                adapter.notifyDataSetChanged();
+        viewmodel.getLlamadas(amigo.getId()).observe(requireActivity(), numLlamadas -> {
+            if (numLlamadas.size() == 0) {
+                b.rvHistorial.setVisibility(View.GONE);
+                b.tvNoLlamadas.setVisibility(View.VISIBLE);
+            } else {
+                b.rvHistorial.setVisibility(View.VISIBLE);
+                b.tvNoLlamadas.setVisibility(View.GONE);
             }
+
+            llamadaList.clear();
+            llamadaList.addAll(numLlamadas);
+            adapter.notifyDataSetChanged();
         });
     }
 }

@@ -21,6 +21,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
@@ -33,6 +35,7 @@ import es.miapp.ad.amigosagenda.databinding.ItemContactosBinding;
 import es.miapp.ad.amigosagenda.model.room.pojo.Amigo;
 import es.miapp.ad.amigosagenda.util.UtilThread;
 import es.miapp.ad.amigosagenda.view.listeners.OnItemClickListenerContacto;
+import es.miapp.ad.amigosagenda.viewmodel.Viewmodel;
 
 public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.ContactoViewHolder> {
 
@@ -40,12 +43,14 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
     private final ContentResolver cr;
     private final OnItemClickListenerContacto listener;
     private final Cursor cursor;
+    private final Viewmodel viewmodel;
 
     public ContactosAdapter(Context context, Cursor cursor, OnItemClickListenerContacto listener) {
         this.context = context;
         this.cursor = cursor;
         this.listener = listener;
         cr = context.getContentResolver();
+        viewmodel = new ViewModelProvider((FragmentActivity) context).get(Viewmodel.class);
     }
 
     @NotNull

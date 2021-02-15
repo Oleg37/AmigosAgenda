@@ -50,6 +50,9 @@ public interface AmigoDao {
     @Query("SELECT * FROM Amigo ORDER BY nombre")
     LiveData<List<Amigo>> getAllAmigo();
 
+    @Query("DELETE FROM amigo")
+    void deleteAll();
+
     @Query("SELECT * FROM Amigo ORDER BY nombre")
     List<Amigo> getAllAmigoList();
 

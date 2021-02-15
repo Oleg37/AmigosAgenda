@@ -64,7 +64,7 @@ public class BroadcastLlamadaEntrante extends BroadcastReceiver {
 
     public void guardar(Repository repository, String llamadaEntrante, long fechaLlamada) {
         UtilThread.threadExecutorPool.execute(() -> {
-            List<Amigo> list = repository.getAmigosList();
+            List<Amigo> list = repository.getListadoAmigos();
 
             for (int i = 0; i < list.size(); i++) {
                 if (PhoneNumberUtils.compare(list.get(i).getTelefono(), llamadaEntrante)) {

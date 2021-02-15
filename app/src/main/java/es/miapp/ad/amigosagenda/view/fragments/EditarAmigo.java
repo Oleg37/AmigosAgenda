@@ -49,7 +49,7 @@ public class EditarAmigo extends Fragment implements CalendarView.OnDateChangeLi
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewmodel = new ViewModelProvider(requireActivity()).get(Viewmodel.class);
-        amigo = viewmodel.getAcual();
+        amigo = viewmodel.getAmigo();
 
         init();
     }

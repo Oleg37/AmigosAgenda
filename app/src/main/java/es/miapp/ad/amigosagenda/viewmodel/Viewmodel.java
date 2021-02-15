@@ -17,13 +17,8 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-
-import java.util.List;
 
 import es.miapp.ad.amigosagenda.model.Repository;
-import es.miapp.ad.amigosagenda.model.room.pojo.Amigo;
-import es.miapp.ad.amigosagenda.model.room.pojo.NumLlamada;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Delegate;
@@ -39,15 +34,5 @@ public class Viewmodel extends AndroidViewModel {
         super(application);
 
         repository = new Repository(application);
-    }
-
-    public LiveData<List<NumLlamada>> getLiveNumAmigosList2() {
-        return repository.getLiveNumAMigosList();
-    }
-
-    public Amigo getActual() { return repository.getAcual(); }
-
-    public void setActual(Amigo amigo) {
-        repository.setAmigo(amigo);
     }
 }
